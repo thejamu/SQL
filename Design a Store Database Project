@@ -1,0 +1,20 @@
+#In this SQL, I'm designing a Medical PPE store database and querying data from a table in it to quantify statistics on customer ordering. 
+
+#1. Create a table for all items in the store containing at least 15 items.
+CREATE TABLE Medical_PPE (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, size TEXT, price INTEGER, color TEXT);
+
+INSERT INTO Medical_PPE VALUES
+(1, "Gloves", 5, "Medium", 15, "Blue"),
+(2, "Gloves", 5, "Large", 20, "Black"),
+(3, "Face mask", 5, "Small", 15, "Blue"),
+(4, "Face mask", 5, "Large", 25, "Black");
+
+#2. Order items by price in descending order. 
+SELECT * FROM Medical_PPE;
+SELECT item, price FROM Medical_PPE ORDER BY price DESC;
+
+#3. How many items are sold in each category?
+SELECT item, SUM(quantity) FROM Medical_PPE GROUP BY item;
+
+#4. Provide statistical information on a customer ordering an item less than or equal to a certain size and less than a certain price.
+SELECT item, size, price FROM Medical_PPE WHERE size <="medium"and price <20 GROUP BY size and price;
